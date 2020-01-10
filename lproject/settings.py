@@ -45,8 +45,6 @@ INSTALLED_APPS = [
     'core',
     'blog',
     'location_field.apps.DefaultConfig',
-    'chain',
-    'cryptography',
     'quote',
     'dashboard',
     'chartjs',
