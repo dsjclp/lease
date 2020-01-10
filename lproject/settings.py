@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'location_field.apps.DefaultConfig',
     'quote',
     'dashboard',
-    'chartjs',
 ]
 
 
