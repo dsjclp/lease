@@ -22,7 +22,6 @@
           <ul class="right hide-on-med-and-down">
               <li {% if request.resolver_match.url_name  == 'home' %}class="active"{% endif %}><a href="{% url 'home' %}">Accueil</a></li>
               <li {% if request.resolver_match.url_name  == 'dashboard' %}class="active"{% endif %}><a href="{% url 'dashboard:quote_list' %}">List</a></li>
-              <li {% if request.resolver_match.url_name  == 'chain' %}class="active"{% endif %}><a href="{% url 'chain:add-peer' %}">Chain</a></li>
               <li {% if request.resolver_match.url_name  == 'quote' %}class="active"{% endif %}><a href="{% url 'quote:create_quote' %}">Quote</a></li>
               {% if user.is_authenticated %}
               {% if user.is_staff %}

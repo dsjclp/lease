@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'location_field.apps.DefaultConfig',
     'chain',
     'cryptography',
-    'rest_framework',
     'quote',
     'dashboard',
     'chartjs',

@@ -7,7 +7,3 @@ django-simple-poll
 django-location-field
 django-widget-tweaks
 numpy
-cryptography
-djangorestframework
-bpython
-Faker
