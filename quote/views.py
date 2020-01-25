@@ -114,14 +114,46 @@ def quoteAjax(request):
     npvrv = rv / pow((1+rate),ind)
     #calcul du montant des loyers en coefficient
     npvfin = saleprice - npvvalue - npvrv
-    # transmission du résultat
+    #affichage du loyer principal
     if (npvcoeff != 0) :
         npvfin = npvfin / npvcoeff
         npvfin = int(npvfin)
     if (npvfin):
-        data = str(npvfin)
-        echvalue = [10, 10, 10, 10, 10, 10, 10, 10, 10, 5, 5, 5, 5, 5, 5, 5, 5, 5]
-        crdvalue = [100, 95, 85, 70, 50, 45, 40, 35, 32, 29, 26, 24, 20, 17, 14, 12, 8, 5]
+        rent = str(npvfin)
+        #affichage de la série des loyers
+        echlist = []
+        echlabel = []
+        i = 0
+        for item in echvalue:
+            echlist.insert(i,npvfin)
+            echlabel.insert(i,i)
+            if (echvalue[i] != 0) :
+                echlist[i] = int(echvalue[i])
+            i=i+1
+        echlist.insert(i,rv)
+        echlabel.insert(i+1,'RV')
+        #affichage de la série des crd
+        crdlist = []
+        crdlabel = []
+        i=0
+        crd = saleprice
+        crdfin = saleprice
+        for item in echvalue:
+            crd = crd *(1+rate)
+            crdfin = crd - echlist[i]
+            crd = crdfin
+            crdlist.insert(i,crd)
+            crdlabel.insert(i,i)
+            i=i+1
+        crdlist.insert(i,rv)
+        crdlabel.insert(i+1,'RV')
+        data = {
+        'rent': rent,
+        'echvalue': echlist,
+        'echlabel': echlabel,
+        'crdvalue': crdlist,
+        'crdlabel': crdlabel,
+    }
         return JsonResponse(data, safe=False)
     else:
         message="Form is not valid"

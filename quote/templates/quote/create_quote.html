@@ -210,6 +210,12 @@
             if (modevalue == 1) {$(this).closest('.row').find('.stepamount').show();$('.stepamountlabel').show();}
             return false;
         });
+
+    // Initialisation des histogrammes
+
+
+
+
         //Fonction de mise en forme du résultat
         function thousands_separators(num)
         {
@@ -294,6 +300,7 @@
         $('#calculatebutton').click();
         return false;
     });
+
 </script>
 
 <script>
@@ -329,18 +336,19 @@
             var str = $( "form" ).serializeArray();
             str = (JSON.stringify(str));
             $.post('../../quote/ajax/',{str: str,},
-                function(data) {updaterent(data);$('#extendedresult').show();});
-                event.preventDefault();
-                $('.result').show();
+                function(data) {
+                    updaterent(data);$('#extendedresult').show();
+                    event.preventDefault();
+                    $('.result').show();
                 //Affichage des histogrammes
                 //dataech = JSON.parse($('#echvalue').html());
                 var miniBar = $('#mini-bar-chart-echvalue');
                 var miniBarChart = new Chart(miniBar, {
                 type: 'bar',
                 data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    labels: data['echlabel'],
                     datasets: [{
-                    data: [100, 95, 85, 70, 50, 45, 40, 35, 32, 29, 26, 24, 20, 17, 14, 12, 8, 5],
+                        data: data['echvalue'],
                     }]
                 },
                 options: flushChartOptions
@@ -350,16 +358,18 @@
                 var miniBarChart = new Chart(miniBar2, {
                 type: 'bar',
                 data: {
-                    labels: ["Jan2", "Feb2", "Mar2", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                    labels: data['crdlabel'],
                     datasets: [{
-                    data: [100, 95, 85, 70, 50, 45, 40, 35, 32, 29, 26, 24, 20, 17, 14, 12, 8, 5],
+                        data: data['crdvalue'],
                     }]
                 },
                 options: flushChartOptions
                 });
+
+            });
         });
         // Fonctions
-		function updaterent(data){$('#result').html(thousands_separators(data)+" €");}
+		function updaterent(data){$('#result').html(thousands_separators(data['rent'])+" €");}
         function thousands_separators(num)
             {
                 var num_parts = num.toString().split(".");

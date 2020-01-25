@@ -912,31 +912,6 @@ var tabLegendCallback = function(chart) {
 
 
     /********************
-     *    DataTables    *
-     ********************/
-    var table = $('#default-table-example').DataTable({
-      'ajax': 'https://api.myjson.com/bins/1us28',
-      'language': {
-        'search': '',
-        'searchPlaceholder': 'Enter search term'
-      },
-      'order': [0, 'asc'],
-      'dom': 'ft<"footer-wrapper"l<"paging-info"ip>>',
-      'scrollY': '400px',
-      'scrollCollapse': true,
-      'pagingType': 'full',
-      'drawCallback': function( settings ) {
-        var api = this.api();
-
-        // Add waves to pagination buttons
-        $(api.table().container()).find('.paginate_button').addClass('waves-effect');
-
-        api.table().columns.adjust();
-      }
-    });
-
-
-    /********************
      *     Calendar     *
      ********************/
     var todaysDate = new Date();

@@ -20,8 +20,6 @@
           <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           {% include "_brandname.html" %}
           <ul class="right hide-on-med-and-down">
-              <li {% if request.resolver_match.url_name  == 'home' %}class="active"{% endif %}><a href="{% url 'home' %}">Accueil</a></li>
-              <li {% if request.resolver_match.url_name  == 'dashboard' %}class="active"{% endif %}><a href="{% url 'dashboard:quote_list' %}">List</a></li>
               <li {% if request.resolver_match.url_name  == 'quote' %}class="active"{% endif %}><a href="{% url 'quote:create_quote' %}">Quote</a></li>
               {% if user.is_authenticated %}
               {% if user.is_staff %}
@@ -60,8 +58,7 @@
       </li>
       <li><a class="sidenav-close red-text" href="#!"><i class="material-icons">close</i>Quitter</a></li>
       <hr>
-      <li {% if request.resolver_match.url_name  == 'home' %}class="active"{% endif %}><a href="{% url 'home' %}"><i class="material-icons">home</i>Accueil</a></li>
-      <li {% if request.resolver_match.url_name  == 'info' %}class="active"{% endif %}><a href="{% url 'info'%}"><i class="material-icons">info</i>Infos</a></li>
+      <li {% if request.resolver_match.url_name  == 'quote' %}class="active"{% endif %}><a href="{% url 'quote:create_quote' %}">Quote</a></li>
       {% if user.is_authenticated %}
       {% if user.is_staff %}
       <li><a href="{% url 'admin:index' %}"><i class="material-icons">build</i>Admin</a></li>

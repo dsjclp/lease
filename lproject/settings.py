@@ -140,7 +140,7 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = '/dashboard/quote_list'
+LOGIN_REDIRECT_URL = '/quote/create'
 LOGOUT_REDIRECT_URL = '/'
 
 THUMBNAIL_EXTENSION = "png"  # Or any extn for your thumbnails
